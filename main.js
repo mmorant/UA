@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$( "#dropable" ).droppable({
       drop: function( event, ui ) {
         $( this )
-          .addClass( "ui-state-highlight" )
+          .addClass( "green" )
           .find( "p" )
             .html( "Dropped!" );
       }

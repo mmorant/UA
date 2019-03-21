@@ -1,8 +1,28 @@
-*{
+*
+{
 	overflow: hidden;
+	
+}
+body
+{
+	background-color: #3A6DFF;
 }
 
-#draggable{
-	width: 100px; height: 100px;
+#draggable
+{
+	width: 100px;
+	height: 100px;
 }
-#dropable{ width: 50%; height: 100%; padding: 0.5em; position: absolute; top: 0; right: 0;}
+#dropable
+{
+	width: 50%;
+	height: 100%;
+	padding: 0.5em;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#green
+{
+	background-color: #05E705 !important;
+}
