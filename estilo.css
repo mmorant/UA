@@ -1,6 +1,8 @@
+*{
+	overflow: hidden;
+}
+
 #draggable{
 	width: 100px; height: 100px;
 }
-#dropable{
-	width: 50%; height: 100%; float: right; background-color: green;
-}
+#dropable{ width: 50%; height: 100%; padding: 0.5em; position: absolute; top: 0; right: 0;}
