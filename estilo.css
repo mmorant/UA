@@ -1,0 +1,6 @@
+#draggable{
+	width: 100px; height: 100px;
+}
+#dropable{
+	width: 50%; height: 100%; float: right; background-color: green;
+}
