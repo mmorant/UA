@@ -1,28 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Acme');
+
 *
 {
 	overflow: hidden;
+	font-family: 'Acme', sans-serif;
+}
+h1
+{
 	
+	text-align: center;
 }
 body
 {
-	background-color: #3A6DFF;
-}
 
-#draggable
+}
+.draggable
 {
-	width: 100px;
-	height: 100px;
+	margin: 0 auto;
 }
 #dropable
 {
-	width: 50%;
-	height: 100%;
+	width: 40%;
 	padding: 0.5em;
-	position: absolute;
-	top: 0;
-	right: 0;
+	margin: 0 auto;
+	margin-top: 2em;
+	text-align: center;
+	/*background-color: red;*/
 }
-#green
+.green
 {
 	background-color: #05E705 !important;
+}
+.container
+{
+	border: 2px solid black;
+	border-radius: 4px;
+	width: 80%;
+	height: 600px;
+	margin: 0 auto;
+	background-color: #BFE1FE;
+	background-image: url("./resources/campo.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	align-items: center;
+	justify-content: center;
+}
+.titulo
+{
+	margin: 0 auto;
+	text-align: center;
+	padding: 2em;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	border: 2px solid #CE9800;
+	border-radius: 4px;
+	width: 30%;
+	background-color: #FFD36A;
+}
+.item-container
+{
+	overflow: visible;
+	margin: 0 auto;
+	width: 80%;
+	margin-top: 2em;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 2%;
+}
+.rombo
+{
+	filter: hue-rotate(-30deg);
+}
+#modalError{
+	margin: 0 auto;
+	color: red;
+	text-align: center;
+	display: none;
+	background-color: white;
+	border: 2px solid #D6D6D6;
+	border-radius: 12px;
+	width: 30%;
+	padding: 0.2em;
+}
+#dialog-confirm{
+	display:none;
 }

@@ -10,7 +10,18 @@
 	<title>Juego 1</title>
 </head>
 <body>
-	<div id="draggable" class="ui-widget-content"><p>Draggable</p></div>
-	<div id="dropable" class=""><p>Drop Here</p></div>
+	<h1>ELIGE LA FORMA CORRECTA</h1>
+	<div class="container">
+		<p class="titulo">Arrastra el <span class="forma"></span> hacia la mochila</p>
+		<div class="item-container">
+		</div>
+		<div id="modalError">Eso no es un <span class="forma"></span>. ¡Vuelve a intentarlo!</div>
+		<div id="dialog-confirm" title="¡Enhorabuena!">
+		  <p>Has acertado correctamente la forma. ¿Quieres jugar el siguiente nivel?</p>
+		</div>
+		<div id="dropable">
+			<img src="./resources/mochila.png" alt="" width="205" height="244">
+		</div>
+	</div>
 </body>
 </html>
