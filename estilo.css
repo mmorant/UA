@@ -92,3 +92,19 @@ body
 .draggable{
 	vertical-align: middle;
 }
+#result-table, th, td{
+	margin: 0 auto;
+	margin-top: 1%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+th, td{
+	padding: 10px;
+}
+th{
+	background-color: #9C9C9C;
+}
+td{
+	background-color: white;
+}

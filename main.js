@@ -29,12 +29,19 @@ $(document).ready(function(){
 
 	var formas = [[cuadrado, triangulo, circulo, rombo],[estrella, ovalo, pentagono, hexagono]];
 	var rnd = Math.floor(Math.random()*4);
+	var modal_lvl = ["Siguiente nivel", "Mostrar resultados"];
+	var fallos = [0, 0];
+	var tiempos = [0, 0]; 
+	var timer0, timer1;
 	
-	
-	nextLvl();
-	
-
+	if(window.location.href.endsWith("resultados.html")){
+		muestraResultados();
+	}
+	else{
+		nextLvl();
+	}
     function nextLvl(){
+    	timer0 = new Date() / 1000;
     	lvl++;
     	$(".item-container").html("");
     	formas[lvl] = formas[lvl].sort(function() {return Math.random() - 0.5});
@@ -55,29 +62,83 @@ $(document).ready(function(){
 		$( "#dropable" ).droppable({
 			//accept: "."+formas[rnd].nombre,
 	     	drop: function( event, ui ) {
-	     		if(ui.draggable.hasClass(formas[lvl][rnd].nombre)){	  
-				    $( "#dialog-confirm" ).dialog({
-				      resizable: false,
-				      height: "auto",
-				      width: 400,
-				      modal: true,
-				      buttons: {
-				        "Siguiente nivel": function() {
-				          $( this ).dialog( "close" );
-				          nextLvl();
-				        },
-				        Salir: function() {
-				          $( this ).dialog( "close" );
-				        }
-			      }
-			  	}).prev(".ui-dialog-titlebar").css("color","green");;
-	     		}
+	     		if(ui.draggable.hasClass(formas[lvl][rnd].nombre)){
+	     			timer1 = new Date() / 1000;
+	     			tiempos[lvl] = (timer1 - timer0).toFixed(2);
+		     		if(formas.length-1 > lvl){
+		     			$( "#dialog-confirm" ).dialog({
+					      resizable: false,
+					      height: "auto",
+					      width: 400,
+					      modal: true,
+					      buttons: {
+						        "Siguiente nivel": function() {
+						          $( this ).dialog( "close" );
+						          nextLvl();
+						          $("#modalError").hide();
+						        },
+						        Salir: function() {
+						          $( this ).dialog( "close" );
+						        }
+				    		}
+				  		}).prev(".ui-dialog-titlebar").css("color","green");
+		     		}
+		     		else{
+		     			$("#dialog-confirm").dialog({
+		     				resizable: false,
+					      	height: "auto",
+						    width: 400,
+						    modal: true,
+						    buttons: {
+						    	"Mostrar resultados": function(){
+						    		$(this).dialog("close");
+						    		document.cookie = "fallos="+JSON.stringify(fallos);
+						    		document.cookie = "tiempos="+JSON.stringify(tiempos);
+						    		window.location.href = "resultados.html";
+						    	},
+						    	Salir: function(){
+						    		$(this).dialog("close");
+						    	}
+						    }
+		     			}).prev(".ui-dialog-titlebar").css("color","green");
+		     		}
+		    	}
 	     		else{
 	     			$(ui.draggable).draggable({ revert: true});
 	     			$("#modalError").show();
+	     			fallos[lvl]++;
+
 	     		}
 	     	}
 	    });
     }
+
+
+    function muestraResultados(){
+    	let fails = JSON.parse(getCookie("fallos"));
+    	let times = JSON.parse(getCookie("tiempos"));
+    	console.log(fails);
+    	for(let i = 0; i < fails.length; i++)
+    	{
+    		console.log("entro");
+    		$("#result-table").append("<tr><td>"+(i+1)+"</td><td>"+fails[i]+"</td><td>"+times[i]+"</td></tr>");
+    	}
+    }
+
+    function getCookie(cname) {
+	  var name = cname + "=";
+	  var decodedCookie = decodeURIComponent(document.cookie);
+	  var ca = decodedCookie.split(';');
+	  for(var i = 0; i <ca.length; i++) {
+	    var c = ca[i];
+	    while (c.charAt(0) == ' ') {
+	      c = c.substring(1);
+	    }
+	    if (c.indexOf(name) == 0) {
+	      return c.substring(name.length, c.length);
+	    }
+	  }
+	  return "";
+	}
 });
 
