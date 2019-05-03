@@ -115,14 +115,18 @@ $(document).ready(function(){
 
 
     function muestraResultados(){
-    	let fails = JSON.parse(getCookie("fallos"));
-    	let times = JSON.parse(getCookie("tiempos"));
-    	console.log(fails);
-    	for(let i = 0; i < fails.length; i++)
-    	{
-    		console.log("entro");
-    		$("#result-table").append("<tr><td>"+(i+1)+"</td><td>"+fails[i]+"</td><td>"+times[i]+"</td></tr>");
-    	}
+    	if(getCookie("fallos") != "" && getCookie("tiempos") != ""){
+	    	let fails = JSON.parse(getCookie("fallos"));
+	    	let times = JSON.parse(getCookie("tiempos"));
+	    	console.log(fails);
+	    	for(let i = 0; i < fails.length; i++)
+	    	{
+	    		
+	    		$("#result-table").append("<tr><td>"+(i+1)+"</td><td>"+fails[i]+"</td><td>"+times[i]+"</td></tr>");
+	    	}
+	    	deleteCookie("fallos");
+	    	deleteCookie("tiempos");
+	    }
     }
 
     function getCookie(cname) {
@@ -140,5 +144,11 @@ $(document).ready(function(){
 	  }
 	  return "";
 	}
+	function deleteCookie( name ) {
+	  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	}
+	$("#restart").click(function(){
+		window.location.href = "index1.html";
+	})
 });
 
