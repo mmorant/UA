@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Acme');
+
+*
+{
+	overflow: hidden;
+	font-family: 'Acme', sans-serif;
+}
+h1
+{
+	
+	text-align: center;
+}
+body
+{
+
+}
+.draggable
+{
+	margin: 0 auto;
+}
+#dropable
+{
+	width: 40%;
+	padding: 0.5em;
+	margin: 0 auto;
+	margin-top: 2em;
+	text-align: center;
+	/*background-color: red;*/
+}
+.green
+{
+	background-color: #05E705 !important;
+}
+.container
+{
+	border: 2px solid black;
+	border-radius: 4px;
+	width: 75%;
+	height: 600px;
+	margin: 0 auto;
+	background-color: #BFE1FE;
+	background-image: url("./resources/campo.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	align-items: center;
+	justify-content: center;
+}
+.titulo
+{
+	margin: 0 auto;
+	text-align: center;
+	padding: 2em;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	border: 2px solid #CE9800;
+	border-radius: 4px;
+	width: 30%;
+	background-color: #FFD36A;
+}
+.item-container
+{
+	overflow: visible;
+	margin: 0 auto;
+	width: 80%;
+	margin-top: 2em;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 2%;
+	align-items: center;
+}
+.rombo
+{
+	filter: hue-rotate(-30deg);
+	vertical-align: middle;
+}
+.ovalo{
+}
+#modalError{
+	margin: 0 auto;
+	color: red;
+	text-align: center;
+	display: none;
+	background-color: white;
+	border: 2px solid #D6D6D6;
+	border-radius: 16px;
+	width: 30%;
+	padding: 0.2em;
+}
+#dialog-confirm{
+	display:none;
+}
+.draggable{
+	vertical-align: middle;
+}
+#result-table, th, td{
+	margin: 0 auto;
+	margin-top: 1%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+th, td{
+	padding: 10px;
+}
+th{
+	background-color: #9C9C9C;
+}
+td{
+	background-color: white;
+}
+
+#restart{
+	background-color: #97FF8F;
+	display: block;
+	margin-top: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1.5em;
+	font-size: 1em;
+	border: 2px solid #0CA400;
+	border-radius: 16px;
+	cursor: pointer;
+
+}

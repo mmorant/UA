@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Acme');
+
+*
+{
+	overflow-x: hidden;
+	font-family: 'Acme', sans-serif;
+}
+h1
+{
+	
+	text-align: center;
+}
+button{
+	font-size: 2em;
+	border: 2px solid lightgrey;
+	margin: 1em;
+	padding: 1em;
+	border-radius: 10px;
+}
+button:hover{
+	background-color: #4286f4;
+}
+.container
+{
+	border: 2px solid black;
+	border-radius: 4px;
+	width: 1252px;
+	height: 906px;
+	margin: 0 auto;
+	background-color: #BFE1FE;
+	background-image: url("./resources/granja.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+.number-container{
+	margin: 0 auto;
+	margin-top: 10em;
+	text-align: center;
+}
+.titulo
+{
+	margin: 0 auto;
+	text-align: center;
+	padding: 2em;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	border: 2px solid #CE9800;
+	border-radius: 4px;
+	width: 30%;
+	background-color: #FFD36A;
+}
+#grass{
+	width: 100%;
+	height: 200px;
+	position: absolute;
+	bottom: 0;
+}
+.manzana{
+	top: 25px;
+	left: 300px;
+	position: absolute;
+	width: 100px;
+}
