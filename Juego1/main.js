@@ -7,10 +7,10 @@ $(document).ready(function(){
 	cuadrado.nombre = "cuadrado";
 	var triangulo = new Object();
 	triangulo.imagen = "./resources/triangulo.png";
-	triangulo.nombre = "triangulo";
+	triangulo.nombre = "triángulo";
 	var circulo = new Object();
 	circulo.imagen = "./resources/circulo.png";
-	circulo.nombre = "circulo";
+	circulo.nombre = "círculo";
 	var rombo = new Object();
 	rombo.imagen = "./resources/rombo.png";
 	rombo.nombre = "rombo";
@@ -20,17 +20,16 @@ $(document).ready(function(){
 	estrella.nombre = "estrella";
 	var ovalo = new Object();
 	ovalo.imagen = "./resources/ovalo.png";
-	ovalo.nombre = "ovalo";
+	ovalo.nombre = "óvalo";
 	var pentagono = new Object();
 	pentagono.imagen = "./resources/pentagono.png";
-	pentagono.nombre = "pentagono";
+	pentagono.nombre = "pentágono";
 	var hexagono = new Object();
 	hexagono.imagen = "./resources/hexagono.png";
-	hexagono.nombre = "hexagono";
+	hexagono.nombre = "hexágono";
 
 	var formas = [[cuadrado, triangulo, circulo, rombo],[estrella, ovalo, pentagono, hexagono]];
 	var rnd = Math.floor(Math.random()*4);
-	var modal_lvl = ["Siguiente nivel", "Mostrar resultados"];
 	var fallos = [0, 0];
 	var tiempos = [0, 0]; 
 	var timer0, timer1;
@@ -42,6 +41,7 @@ $(document).ready(function(){
 		nextLvl();
 	}
     function nextLvl(){
+    	
     	timer0 = new Date() / 1000;
     	lvl++;
     	$(".item-container").html("");
@@ -50,6 +50,8 @@ $(document).ready(function(){
 			console.log(formas[lvl][i]);
 			$(".item-container").append("<div class='draggable "+formas[lvl][i].nombre+"'><img src='"+formas[lvl][i].imagen+"' alt='' width='100'></div>");
 		}
+
+		responsiveVoice.speak("Arrastra el "+formas[lvl][rnd].nombre+" hasta la mochila", "Spanish Female", {rate: 0.75});
 		console.log(formas);
 		$(".forma").html(formas[lvl][rnd].nombre);
 
@@ -83,6 +85,7 @@ $(document).ready(function(){
 						        }
 				    		}
 				  		}).prev(".ui-dialog-titlebar").css("color","green");
+
 		     		}
 		     		else{
 		     			$("#dialog-confirm").dialog({
@@ -103,10 +106,12 @@ $(document).ready(function(){
 						    }
 		     			}).prev(".ui-dialog-titlebar").css("color","green");
 		     		}
+		     		responsiveVoice.speak("¡Enhorabuena, has acertado!", "Spanish Female", {rate: 0.75});
 		    	}
 	     		else{
 	     			$(ui.draggable).draggable({ revert: true});
 	     			$("#modalError").show();
+	     			responsiveVoice.speak("¡Oh!, has fallado. ¡Vuelve a intentarlo!", "Spanish Female", {rate: 0.75});
 	     			fallos[lvl]++;
 
 	     		}
