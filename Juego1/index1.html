@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<script src="jquery-3.4.0.js"></script>
+	<link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+	<link rel="stylesheet" href="estilo.css">
+	<script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+	<script src="main.js"></script>
+	<title>Juego 1</title>
+</head>
+<body>
+	<h1>ELIGE LA FORMA CORRECTA</h1>
+	<div class="container">
+		<p class="titulo">Arrastra el <span class="forma"></span> hacia la mochila</p>
+		<div class="item-container">
+		</div>
+		<div id="modalError">Eso no es un <span class="forma"></span>. ¡Vuelve a intentarlo!</div>
+		<div id="dialog-confirm" title="¡Enhorabuena!">
+		  <p>Has acertado correctamente la forma. ¿Quieres jugar el siguiente nivel?</p>
+		</div>
+		<div id="dropable">
+			<img src="./resources/mochila.png" alt="" width="205" height="244">
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+*{
+	overflow: hidden;
+	box-sizing: border-box;
+	font-family: 'Work Sans', sans-serif;
+}
+
+body{
+	background-image: url('fondo1.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+section{
+	margin: auto;
+	background-color: #e6ffff;
+	width: 600px;
+}
+h1{
+	text-align: center;
+	font-size: 2em;
+}
+h2{
+	text-align: center;
+	font-size: 1.4em;
+	margin-bottom: 1.2em;
+}
+h3{
+	text-align: center;
+	font-size: 1em;
+	margin-bottom: 1.2em;
+}
+#sortable { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+	width: 530px;
+	background-color: #4CAF50;
+}
+#sortable li { 
+	margin: 3px; 
+	padding: 1px; 
+	float: left; 
+	width: 100px; 
+	height: 90px; 
+	font-size: 4em; 
+	text-align: center; 
+	background-color: white;
+}
+#sortable li:hover{
+	cursor: pointer;
+	background-color: #f2f2f2; 
+}
+
+#resultado{
+	text-align: center;
+	font-size: 1.2em;
+}
+
+#botones{
+	margin: 2em auto;
+	text-align: center;
+}
+.boton{
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+}
+.boton:hover{
+	background-color: #4C8F70;
+	cursor: pointer;
+}
+
+#dialog-confirm{
+	display: none;
+}
+#dialog-confirm span{
+	float:left; 
+	margin:12px 12px 20px 0;
+}
+
+@media only screen and (max-width: 768px) {
+	section{
+		width: 80%;
+	}
+	#sortable { 
+		list-style-type: none; 
+		margin: 0; 
+		padding: 0; 
+		width: 60%; 
+	}
+  	#sortable li { 
+	  	margin: 3px auto;
+	  	padding: 5px; 
+	  	font-size: 1.2em; 
+	  	height: 1.5em;
+	  	width: 100%;
+	  }
+}
