@@ -7,7 +7,7 @@
 }
 h1
 {
-	
+
 	text-align: center;
 }
 body
@@ -17,6 +17,9 @@ body
 .draggable
 {
 	margin: 0 auto;
+}
+.draggable:focus{
+	border: 2px solid rgb(86, 236, 25);
 }
 #dropable
 {
