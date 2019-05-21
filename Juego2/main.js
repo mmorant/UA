@@ -10,6 +10,14 @@ $(document).ready(function(){
 	}else{
 		juego();
 	}
+	$(".incorrecto").keypress(function(e) {
+	 if(e.which == 13) {
+		 e.preventDefault();
+		 fallos++;
+		 $("#modalError").show();
+		 responsiveVoice.speak("¡Vuelve a intentarlo!", "Spanish Female", {rate: 0.75});
+	 }
+ });
 	function juego(){
 		for(let i = 0; i < correcto; i++){
 			$("#grass").append('<img src="resources/manzana.png" class="manzana" id="'+i+'">');
@@ -63,6 +71,8 @@ $(document).ready(function(){
 		});
 		$(".incorrecto").click(function(){
 			fallos++;
+			$("#modalError").show();
+			responsiveVoice.speak("¡Vuelve a intentarlo!", "Spanish Female", {rate: 0.75});
 		});
 	}
 

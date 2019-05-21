@@ -31,9 +31,9 @@ $(document).ready(function(){
 	var formas = [[cuadrado, triangulo, circulo, rombo],[estrella, ovalo, pentagono, hexagono]];
 	var rnd = Math.floor(Math.random()*4);
 	var fallos = [0, 0];
-	var tiempos = [0, 0]; 
+	var tiempos = [0, 0];
 	var timer0, timer1;
-	
+
 	if(window.location.href.endsWith("resultados.html")){
 		muestraResultados();
 	}
@@ -41,15 +41,15 @@ $(document).ready(function(){
 		nextLvl();
 	}
     function nextLvl(){
-    	
+
     	timer0 = new Date() / 1000;
     	lvl++;
     	$(".item-container").html("");
     	formas[lvl] = formas[lvl].sort(function() {return Math.random() - 0.5});
     	for( let i = 0; i < formas[lvl].length; i++){
-			console.log(formas[lvl][i]);
-			$(".item-container").append("<div class='draggable "+formas[lvl][i].nombre+"'><img src='"+formas[lvl][i].imagen+"' alt='' width='100'></div>");
-		}
+				console.log(formas[lvl][i]);
+				$(".item-container").append("<div class='draggable "+formas[lvl][i].nombre+"' tabindex='"+i+1+"'><img src='"+formas[lvl][i].imagen+"' alt='' width='100'></div>");
+			}
 
 		responsiveVoice.speak("Arrastra el "+formas[lvl][rnd].nombre+" hasta la mochila", "Spanish Female", {rate: 0.75});
 		console.log(formas);
@@ -66,47 +66,7 @@ $(document).ready(function(){
 			//accept: "."+formas[rnd].nombre,
 	     	drop: function( event, ui ) {
 	     		if(ui.draggable.hasClass(formas[lvl][rnd].nombre)){
-	     			timer1 = new Date() / 1000;
-	     			tiempos[lvl] = (timer1 - timer0).toFixed(2);
-		     		if(formas.length-1 > lvl){
-		     			$( "#dialog-confirm" ).dialog({
-					      resizable: false,
-					      height: "auto",
-					      width: 400,
-					      modal: true,
-					      buttons: {
-						        "Siguiente nivel": function() {
-						          $( this ).dialog( "close" );
-						          nextLvl();
-						          $("#modalError").hide();
-						        },
-						        Salir: function() {
-						          $( this ).dialog( "close" );
-						        }
-				    		}
-				  		}).prev(".ui-dialog-titlebar").css("color","green");
-
-		     		}
-		     		else{
-		     			$("#dialog-confirm").dialog({
-		     				resizable: false,
-					      	height: "auto",
-						    width: 400,
-						    modal: true,
-						    buttons: {
-						    	"Mostrar resultados": function(){
-						    		$(this).dialog("close");
-						    		document.cookie = "fallos="+JSON.stringify(fallos);
-						    		document.cookie = "tiempos="+JSON.stringify(tiempos);
-						    		window.location.href = "resultados.html";
-						    	},
-						    	Salir: function(){
-						    		$(this).dialog("close");
-						    	}
-						    }
-		     			}).prev(".ui-dialog-titlebar").css("color","green");
-		     		}
-		     		responsiveVoice.speak("¡Enhorabuena, has acertado!", "Spanish Female", {rate: 0.75});
+						acierto();
 		    	}
 	     		else{
 	     			$(ui.draggable).draggable({ revert: true});
@@ -117,6 +77,20 @@ $(document).ready(function(){
 	     		}
 	     	}
 	    });
+			$(".draggable").keypress(function(e) {
+			 if(e.which == 13) {
+				 e.preventDefault();
+				 if($(this).hasClass(formas[lvl][rnd].nombre)){
+					 acierto();
+				 }
+				 else{
+					 $("#modalError").show();
+					 responsiveVoice.speak("¡Vuelve a intentarlo!", "Spanish Female", {rate: 0.75});
+				 }
+
+			 }
+		 });
+
     }
 
 
@@ -127,7 +101,7 @@ $(document).ready(function(){
 	    	console.log(fails);
 	    	for(let i = 0; i < fails.length; i++)
 	    	{
-	    		
+
 	    		$("#result-table").append("<tr><td>"+(i+1)+"</td><td>"+fails[i]+"</td><td>"+times[i]+"</td></tr>");
 	    	}
 	    	deleteCookie("fallos");
@@ -155,5 +129,49 @@ $(document).ready(function(){
 	}
 	$("#restart").click(function(){
 		window.location.href = "index1.html";
-	})
+	});
+
+ function acierto(){
+	 timer1 = new Date() / 1000;
+	 tiempos[lvl] = (timer1 - timer0).toFixed(2);
+	 if(formas.length-1 > lvl){
+		 $( "#dialog-confirm" ).dialog({
+			 resizable: false,
+			 height: "auto",
+			 width: 400,
+			 modal: true,
+			 buttons: {
+					 "Siguiente nivel": function() {
+						 $( this ).dialog( "close" );
+						 nextLvl();
+						 $("#modalError").hide();
+					 },
+					 Salir: function() {
+						 $( this ).dialog( "close" );
+					 }
+			 }
+		 }).prev(".ui-dialog-titlebar").css("color","green");
+
+	 }
+	 else{
+		 $("#dialog-confirm").dialog({
+			 resizable: false,
+				 height: "auto",
+			 width: 400,
+			 modal: true,
+			 buttons: {
+				 "Mostrar resultados": function(){
+					 $(this).dialog("close");
+					 document.cookie = "fallos="+JSON.stringify(fallos);
+					 document.cookie = "tiempos="+JSON.stringify(tiempos);
+					 window.location.href = "resultados.html";
+				 },
+				 Salir: function(){
+					 $(this).dialog("close");
+				 }
+			 }
+		 }).prev(".ui-dialog-titlebar").css("color","green");
+	 }
+	 responsiveVoice.speak("¡Enhorabuena, has acertado!", "Spanish Female", {rate: 0.75});
+ }
 });
