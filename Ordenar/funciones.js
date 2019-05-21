@@ -40,7 +40,7 @@ $(document).ready(function(){
 			}
 			if(mete){
 				dif.push(num);
-				html += '<li class="ui-state-default">'+ num +'</li>';
+				html += '<li class="ui-state-default" tabIndex="'+i+1+'">'+ num +'</li>';
 			}
 		}
 

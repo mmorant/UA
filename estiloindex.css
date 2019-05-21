@@ -22,7 +22,7 @@ section>div{
 	width: 80%;
 	border: 3px solid black;
 }
-section>div>div:hover{
+section>div>div:hover,section>div>div:focus{
 	cursor: pointer;
 	background: #80ffe5;
 }
