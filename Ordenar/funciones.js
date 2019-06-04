@@ -3,6 +3,7 @@ $(document).ready(function(){
 	var max = 20, min = 0;
 	var fallos = 0;
 	var aux1, aux2;
+	var entra = true;
 	
 	if (nivel==1) {
 		max = 20;
@@ -20,6 +21,7 @@ $(document).ready(function(){
 		nivel = 1;
 	}
 	$('h2').html("Nivel "+nivel);
+
 	ordenarNumeros(max, min);
 
 	function ordenarNumeros(max, min){
@@ -41,7 +43,7 @@ $(document).ready(function(){
 			}
 			if(mete){
 				dif.push(num);
-				html += '<li class="tab ui-state-default" tabIndex="'+(i+1)+'">'+ num +'</li>';
+				html += '<li class="tab ui-state-default" tabIndex="'+(1)+'">'+ num +'</li>';
 			}
 		}
 
@@ -115,34 +117,33 @@ $(document).ready(function(){
 				console.log(fallos);
 			}
 		});
+
+		entra = true;
+	
+		$('.tab').keypress(function(e) {
+	     	if(e.which == 13) {
+		     	e.preventDefault();
+
+		     	if(entra==true){
+			     	aux1 = $(this).text();
+			        entra = false;
+		        }
+		        else{
+			     	aux2 = $(this).html();
+			     	
+			   		$('#sortable>li').each(function(){
+			   			if ($(this).text()==aux1) {
+			   				$(this).html(aux2);
+			   			}
+			   		});
+			   		$(this).html(aux1);
+			   		
+			     	entra = true;
+		  		}
+	     	}
+	 	});
 	}
 
-var entra = true;
-	
-	$('.tab').keypress(function(e) {
-     	if(e.which == 13) {
-	     	e.preventDefault();
-	     	if(entra==true){
-		     	aux1 = $(this).text();
-		        
 
-		        entra = false;
-	        }
-	        else{
-		     	aux2 = $(this).html();
-		     	
-		   		$('#sortable>li').each(function(){
-		   			if ($(this).text()==aux1) {
-		   				$(this).html(aux2);
-		   				console.log("eeee");
-		   			}
-		   			
-		   		});
-		   		$(this).html(aux1);
-		   		
-		     	entra = true;
-	  		}
-     	}
- 	});
 	     	
 });   
